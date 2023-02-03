@@ -1,6 +1,6 @@
 package scheduler;
 
-public class LinkedList<T extends LinkedDays> {
+public class LinkedList<T extends String> {
 
     private Node<T> head;
     private Node<T> tail;
