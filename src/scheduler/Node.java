@@ -1,7 +1,7 @@
 package scheduler;
 
 
-public class Node<T extends String> {
+public class Node<T extends Integer> {
     
     private T value;
     private Node<T> prev;

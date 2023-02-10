@@ -1,6 +1,6 @@
 package scheduler;
 
-public class LinkedList<T extends String> {
+public class LinkedList<T extends Integer> {
 
     private Node<T> head;
     private Node<T> tail;

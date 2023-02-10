@@ -1,5 +1,6 @@
 package scheduler;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 /*
@@ -28,30 +29,14 @@ import java.util.Scanner;
 public class Scheduler {
 
 	public static void main(String[] args) {
+		days[] d = new days[7];
+		Activity<Integer, String> act = new Activity<Integer, String>();
+		
 		Scanner scanDay = new Scanner(System.in);
 		String day = scanDay.nextLine();
 		System.out.println("What day would you like to interact with?");
 		
 		String dayInfo;
-		
-		switch (day) {
-
-		case ("monday"):
-			days.MONDAY.values();
-		case ("tuesday"):
-			days.TUESDAY.values();
-		case ("wednesday"):
-			days.WEDNESDAY.values();
-		case ("thursday"):
-			days.THURSDAY.values();
-		case ("friday"):
-			days.FRIDAY.values();
-		case ("saturday"):
-			days.SATURDAY.values();
-		case ("sunday"):
-			days.SUNDAY.values();
-			
-		}
 		
 		Scanner scanAction = new Scanner(System.in);
 		String action = scanAction.nextLine();
@@ -64,19 +49,86 @@ public class Scheduler {
 			Scanner scanAdd = new Scanner(System.in);
 			input = scanAction.nextLine();
 			System.out.println("What would you like to add?");
+			switch (day) {
+
+			case ("monday"):
+				days.MONDAY.daysList.add(input);
+			case ("tuesday"):
+				days.TUESDAY.daysList.add(input);
+			case ("wednesday"):
+				days.WEDNESDAY.daysList.add(input);
+			case ("thursday"):
+				days.THURSDAY.daysList.add(input);
+			case ("friday"):
+				days.FRIDAY.daysList.add(input);
+			case ("saturday"):
+				days.SATURDAY.daysList.add(input);
+			case ("sunday"):
+				days.SUNDAY.daysList.add(input);
+				
+			}
+			
+			try(input == ) {
+				
+			} catch(SchedulingConflictException e) {
+				
+			}
+			
 		case ("view"):
 			Scanner scanView = new Scanner(System.in);
 			input = scanView.nextLine();
 			System.out.println("What day would you like to view?");
+			switch (day) {
+
+			case ("monday"):
+				days.MONDAY.
+			case ("tuesday"):
+				days.TUESDAY.daysList.add(input);
+			case ("wednesday"):
+				days.WEDNESDAY.daysList.add(input);
+			case ("thursday"):
+				days.THURSDAY.daysList.add(input);
+			case ("friday"):
+				days.FRIDAY.daysList.add(input);
+			case ("saturday"):
+				days.SATURDAY.daysList.add(input);
+			case ("sunday"):
+				days.SUNDAY.daysList.add(input);
+				
+			}
 		case ("remove"):
 			Scanner scanRemove = new Scanner(System.in);
 			input = scanRemove.nextLine();
 			System.out.println("What would you like to remove?");
-			
+			switch (day) {
+
+			case ("monday"):
+				days.MONDAY.daysList.remove();
+			case ("tuesday"):
+				days.TUESDAY.daysList.remove();
+			case ("wednesday"):
+				days.WEDNESDAY.daysList.remove();
+			case ("thursday"):
+				days.THURSDAY.daysList.remove();
+			case ("friday"):
+				days.FRIDAY.daysList.remove();
+			case ("saturday"):
+				days.SATURDAY.daysList.remove();
+			case ("sunday"):
+				days.SUNDAY.daysList.remove();
+				
+			}
 		} //default("error");
 	}
 
 	enum days {
-		MONDAY(), TUESDAY(), WEDNESDAY(), THURSDAY(), FRIDAY(), SATURDAY(), SUNDAY()
+		MONDAY(), TUESDAY(), WEDNESDAY(), THURSDAY(), FRIDAY(), SATURDAY(), SUNDAY();
+		LinkedList<Integer> daysList = new LinkedList<Integer>();
+	}
+	
+	void sortTime(int time) {
+		for (int i = 0; i < array.length; i++) {
+			
+		}
 	}
 }
