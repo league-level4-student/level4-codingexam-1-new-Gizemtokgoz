@@ -1,6 +1,6 @@
 package scheduler;
 
-public class Event {
+public abstract class Event {
 	int time;
 	String description;
 }
