@@ -39,6 +39,8 @@ public class Scheduler {
 	static days[] weekEvents;
 
 	public static void main(String[] args) {
+		weekEvents = new days[]{days.MONDAY, days.TUESDAY, days.WEDNESDAY, days.THURSDAY, days.FRIDAY, days.SATURDAY, days.SUNDAY};
+		
 		Scanner scanAction = new Scanner(System.in);
 		System.out.println("To add an event type A, to remove type R, to view an event type V");
     	String action = scanAction.nextLine();
@@ -47,7 +49,7 @@ public class Scheduler {
     		System.out.println("What event would you like to enter and at what time?");
     		String eventChoice = scanAction.nextLine();
     		
-    		System.out.println("What day do you want the String on");
+    		System.out.println("What day do you want the event on");
     		String day = scanAction.nextLine();
     		
     		add(eventChoice,day);
@@ -56,7 +58,7 @@ public class Scheduler {
     		System.out.println("What time is the event you would like remove?");
     		String time = scanAction.nextLine();
     		
-    		System.out.println("What day is the String you want to remove?");
+    		System.out.println("What day is the event you want to remove?");
     		String day = scanAction.nextLine();
     		
     		remove(time, day);
@@ -67,72 +69,22 @@ public class Scheduler {
     		view(day);
     	}
     }
-//		String input;
-//		switch (action) {
 
-//		case ("add"):
-//			Scanner scanAdd = new Scanner(System.in);
-//			input = scanAction.nextLine();
-//			System.out.println("What would you like to add?");
-//			switch (day) {
-//
-//			case ("monday"):
-//				days.MONDAY.daysList.add(input);
-//			case ("tuesday"):
-//				days.TUESDAY.daysList.add(input);
-//			case ("wednesday"):
-//				days.WEDNESDAY.daysList.add(input);
-//			case ("thursday"):
-//				days.THURSDAY.daysList.add(input);
-//			case ("friday"):
-//				days.FRIDAY.daysList.add(input);
-//			case ("saturday"):
-//				days.SATURDAY.daysList.add(input);
-//			case ("sunday"):
-//				days.SUNDAY.daysList.add(input);
-//				
-//			}
-//			
-//			try(input == ) {
-//				
-//			} catch(SchedulingConflictException e) {
-//				
-//			}
-//			
-//		case ("view"):
-//			Scanner scanView = new Scanner(System.in);
-//			input = scanView.nextLine();
-//			System.out.println("What day would you like to view?");
-//			switch (day) {
-//
-//			case ("monday"):
-//				days.MONDAY.
-//			case ("tuesday"):
-//				days.TUESDAY.daysList.add(input);
-//			case ("wednesday"):
-//				days.WEDNESDAY.daysList.add(input);
-//			case ("thursday"):
-//				days.THURSDAY.daysList.add(input);
-//			case ("friday"):
-//				days.FRIDAY.daysList.add(input);
-//			case ("saturday"):
-//				days.SATURDAY.daysList.add(input);
-//			case ("sunday"):
-//				days.SUNDAY.daysList.add(input);
-//				
-//			}
-//		} //default("error");
-//	}
-
-	enum days {
+	public enum days {
 		MONDAY(monday), TUESDAY(tuesday), WEDNESDAY(wednesday), THURSDAY(thursday), FRIDAY(friday), SATURDAY(saturday),
 		SUNDAY(sunday);
 		
-		LinkedList<String> events;	
+		LinkedList<String> events;
 		days(LinkedList<String> events) {
 			this.events = events;
 		}
+		public LinkedList<String> getEvents() {
+			return this.getEvents();
+		}
 
+		public void view() {
+			
+		}
 	}
 
 	public static void add(String eventAction, String day) {
@@ -157,7 +109,34 @@ public class Scheduler {
 		else if (day.equals("Sunday")) {
 			weekEvents[6].events.add(eventAction);
 		}
-
+		
+		Scanner scanAction = new Scanner(System.in);
+		System.out.println("Would you like to add another event(type A), remove an event(type R), or view an event(type V)?");
+    	String action = scanAction.nextLine();
+    	
+    	if (action.equals("A")) {
+    		System.out.println("What event would you like to enter and at what time?");
+    		String eventChoice = scanAction.nextLine();
+    		
+    		System.out.println("What day do you want the event on");
+    		String theday = scanAction.nextLine();
+    		
+    		add(eventChoice,theday);
+    	} 
+    	else if (action.equals("R")) {
+    		System.out.println("What time is the event you would like remove?");
+    		String time = scanAction.nextLine();
+    		
+    		System.out.println("What day is the event you want to remove?");
+    		String theday = scanAction.nextLine();
+    		
+    		remove(time, theday);
+    	} 
+    	else {
+    		System.out.println("What day do you want to view");
+    		String theday = scanAction.nextLine();
+    		view(theday);
+    	}
 	}
 
 	public static void remove(String time, String day) {
@@ -172,7 +151,7 @@ public class Scheduler {
 				}
 			}
 		} 
-		else if (day.equals("Teusday")) {
+		else if (day.equals("Tuesday")) {
 			Node<String> head = weekEvents[1].events.getHead();
 			if (head.getValue().contains(time)) {
 				weekEvents[1].events.remove(0);
@@ -227,24 +206,52 @@ public class Scheduler {
 				}
 			}
 		} 
-//		else {
-//			Node<String> head = weekEvents[4].events.getHead();
-//			if (head.getValue().contains(time)) {
-//				weekEvents[4].events.remove(0);
-//			}
-//			for (int i = 1; i <= weekEvents[5].events.size(); i++) {
-//				if (head.getNext().getValue().contains(time)) {
-//					weekEvents[5].events.remove(i);
-//				}
-//			}
-//		}
+		else {
+			Node<String> head = weekEvents[4].events.getHead();
+			if (head.getValue().contains(time)) {
+				weekEvents[4].events.remove(0);
+			}
+			for (int i = 1; i <= weekEvents[5].events.size(); i++) {
+				if (head.getNext().getValue().contains(time)) {
+					weekEvents[5].events.remove(i);
+				}
+			}
+		}
+		
+		Scanner scanAction = new Scanner(System.in);
+		System.out.println("Would you like to add another event(type A), remove an event(type R), or view an event(type V)?");
+    	String action = scanAction.nextLine();
+    	
+    	if (action.equals("A")) {
+    		System.out.println("What event would you like to enter and at what time?");
+    		String eventChoice = scanAction.nextLine();
+    		
+    		System.out.println("What day do you want the event on");
+    		String theday = scanAction.nextLine();
+    		
+    		add(eventChoice,theday);
+    	} 
+    	else if (action.equals("R")) {
+    		System.out.println("What time is the event you would like remove?");
+    		String thetime = scanAction.nextLine();
+    		
+    		System.out.println("What day is the event you want to remove?");
+    		String theday = scanAction.nextLine();
+    		
+    		remove(thetime, theday);
+    	} 
+    	else {
+    		System.out.println("What day do you want to view");
+    		String theday = scanAction.nextLine();
+    		view(theday);
+    	}
 	}
 
 	public static void view(String day) {
 		if (day.equals("Monday")) {
 			weekEvents[0].events.print();
 		} 
-		else if (day.equals("Teusday")) {
+		else if (day.equals("Tuesday")) {
 			weekEvents[1].events.print();
 		} 
 		else if (day.equals("Wednesday")) {
@@ -262,5 +269,33 @@ public class Scheduler {
 		else {
 			weekEvents[6].events.print();
 		}
+		
+		Scanner scanAction = new Scanner(System.in);
+		System.out.println("Would you like to add another event(type A), remove an event(type R), or view an event(type V)?");
+    	String action = scanAction.nextLine();
+    	
+    	if (action.equals("A")) {
+    		System.out.println("What event would you like to enter and at what time?");
+    		String eventChoice = scanAction.nextLine();
+    		
+    		System.out.println("What day do you want the event on");
+    		String theday = scanAction.nextLine();
+    		
+    		add(eventChoice,theday);
+    	} 
+    	else if (action.equals("R")) {
+    		System.out.println("What time is the event you would like remove?");
+    		String time = scanAction.nextLine();
+    		
+    		System.out.println("What day is the event you want to remove?");
+    		String theday = scanAction.nextLine();
+    		
+    		remove(time, theday);
+    	} 
+    	else {
+    		System.out.println("What day do you want to view");
+    		String theday = scanAction.nextLine();
+    		view(theday);
+    	}
 	}
 }
